@@ -1,34 +1,38 @@
 using System;
 
-class OutRefDemo
+class Program
 {
-    // Method using 'out' keyword
-    static void CalculateSquareAndCube(int number, out int square, out int cube)
+    // Method using ref keyword
+    static void AddTen(ref int num)
     {
-        square = number * number;
-        cube = number * number * number;
+        num = num + 10;
     }
 
-    // Method using 'ref' keyword
-    static void Increment(ref int number)
+    // Method using out keyword
+    static void GetValues(out int a, out int b)
     {
-        number += 1;
+        a = 20;
+        b = 30;
     }
 
-    static void Main()
+    static void Main(string[] args)
     {
-        int num;
+        // Demonstrating ref
+        int number = 5;
+        Console.WriteLine("Before using ref: " + number);
 
-        // Using 'out' keyword
-        Console.Write("Enter a number: ");
-        int input = int.Parse(Console.ReadLine());
-        CalculateSquareAndCube(input, out int sq, out int cu);
-        Console.WriteLine($"Square: {sq}, Cube: {cu}");
+        AddTen(ref number);
 
-        // Using 'ref' keyword
-        int count = 5;
-        Console.WriteLine("Before Increment: " + count);
-        Increment(ref count);
-        Console.WriteLine("After Increment: " + count);
+        Console.WriteLine("After using ref: " + number);
+
+        // Demonstrating out
+        int x, y;
+        GetValues(out x, out y);
+
+        Console.WriteLine("Values returned using out:");
+        Console.WriteLine("x = " + x);
+        Console.WriteLine("y = " + y);
+
+        Console.ReadLine();
     }
 }
