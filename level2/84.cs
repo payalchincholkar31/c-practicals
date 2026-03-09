@@ -1,21 +1,39 @@
 using System;
 
-class Program
+class AnagramCheck
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        string text = "C sharp programming language";
+        Console.Write("Enter first string: ");
+        string str1 = Console.ReadLine();
 
-        // Splitting string into words
-        string[] words = text.Split(' ');
+        Console.Write("Enter second string: ");
+        string str2 = Console.ReadLine();
 
-        Console.WriteLine("Words in the string:");
+        // Convert to lowercase
+        str1 = str1.ToLower();
+        str2 = str2.ToLower();
 
-        foreach (string word in words)
+        // Convert strings to character array
+        char[] arr1 = str1.ToCharArray();
+        char[] arr2 = str2.ToCharArray();
+
+        // Sort arrays
+        Array.Sort(arr1);
+        Array.Sort(arr2);
+
+        // Convert arrays back to string
+        string sorted1 = new string(arr1);
+        string sorted2 = new string(arr2);
+
+        // Compare
+        if (sorted1 == sorted2)
         {
-            Console.WriteLine(word);
+            Console.WriteLine("Strings are Anagrams.");
         }
-
-        Console.ReadLine();
+        else
+        {
+            Console.WriteLine("Strings are NOT Anagrams.");
+        }
     }
 }
