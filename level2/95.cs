@@ -1,29 +1,24 @@
 using System;
-using System.Collections.Generic;
 
-class CommonElementsOptimized
+class MissingNumberDemo
 {
     static void Main()
     {
-        // Input arrays
-        int[] array1 = { 1, 2, 3, 4, 5 };
-        int[] array2 = { 4, 5, 6, 7, 8 };
+        // Example array with numbers from 1 to 10, missing 7
+        int[] array = { 1, 2, 3, 4, 5, 6, 8, 9, 10 };
+        int n = 10; // Maximum number in sequence
 
-        Console.WriteLine("Array 1: " + string.Join(", ", array1));
-        Console.WriteLine("Array 2: " + string.Join(", ", array2));
-
-        // Use HashSet for fast lookup
-        HashSet<int> set1 = new HashSet<int>(array1);
-        HashSet<int> common = new HashSet<int>();
-
-        foreach (int num in array2)
+        int sumOfArray = 0;
+        for (int i = 0; i < array.Length; i++)
         {
-            if (set1.Contains(num))
-            {
-                common.Add(num); // Avoid duplicates
-            }
+            sumOfArray += array[i];
         }
 
-        Console.WriteLine("\nCommon Elements: " + string.Join(", ", common));
+        // Sum of first n natural numbers
+        int totalSum = n * (n + 1) / 2;
+
+        int missingNumber = totalSum - sumOfArray;
+
+        Console.WriteLine("The missing number is: " + missingNumber);
     }
 }
