@@ -2,21 +2,30 @@ using System;
 
 class Student
 {
-    public string name;
-    public int age;
+    // Data members
+    int id;
+    string name;
 
-    // Constructor
-    public Student(string n, int a)
+    // Default Constructor
+    public Student()
     {
-        name = n;
-        age = a;
+        id = 0;
+        name = "Unknown";
     }
 
-    // Method to display details
+    // Parameterized Constructor
+    public Student(int i, string n)
+    {
+        id = i;
+        name = n;
+    }
+
+    // Method to display data
     public void Display()
     {
+        Console.WriteLine("Student ID: " + id);
         Console.WriteLine("Student Name: " + name);
-        Console.WriteLine("Student Age: " + age);
+        Console.WriteLine();
     }
 }
 
@@ -24,10 +33,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Creating object and calling constructor
-        Student s1 = new Student("Payal", 20);
-
+        // Using default constructor
+        Student s1 = new Student();
         s1.Display();
+
+        // Using parameterized constructor
+        Student s2 = new Student(101, "Payal");
+        s2.Display();
 
         Console.ReadLine();
     }
