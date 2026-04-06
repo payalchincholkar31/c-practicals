@@ -1,18 +1,17 @@
 using System;
 
-class Program
+class ThrowExample
 {
-    // Method to check a number and throw exception if invalid
-    static void CheckNumber(int number)
+    static void CheckAge(int age)
     {
-        if (number < 0)
+        if (age < 18)
         {
-            // Throwing an exception
-            throw new ArgumentException("Number cannot be negative.");
+            // Throwing an exception manually
+            throw new ArgumentException("Age must be 18 or above.");
         }
         else
         {
-            Console.WriteLine("Valid number: " + number);
+            Console.WriteLine("Access granted!");
         }
     }
 
@@ -20,24 +19,18 @@ class Program
     {
         try
         {
-            Console.Write("Enter a number: ");
-            int num = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter your age: ");
+            int age = Convert.ToInt32(Console.ReadLine());
 
-            CheckNumber(num);
+            CheckAge(age);
         }
         catch (ArgumentException ex)
         {
             Console.WriteLine("Exception caught: " + ex.Message);
         }
-        catch (FormatException ex)
-        {
-            Console.WriteLine("Error: Please enter a valid integer.");
-        }
         finally
         {
-            Console.WriteLine("Program execution completed.");
+            Console.WriteLine("Program executed successfully.");
         }
-
-        Console.ReadLine();
     }
 }
